@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --accent: #FF7F01;
+    --textColor-light: #fff;
+    --textColor-dark: #202020;
+    --textBG-light: #f1f1f1; 
+    --textBG-dark: #202020;
+
+    --padding: 16px;
+
+}
+body {
+    padding: 4rem 2rem;
+    margin: 0;
+    background: #f5f5f5;   
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.player {
+    width: 288px;
+    height: 162px;
+    background: url("assets/bg.png");
+}
+.fixed {
+    width: 288px;
+    height: 72px;
+    background: white;
+    border-bottom: 1px solid #C1C1C1;
+    position: relative;
+    font-size: 13px;
+    .text {
+        position: absolute;
+        bottom: var(--padding);
+        left: var(--padding);
+        .title {
+            margin-bottom: 4px;
+            background: var(--accent);
+            color: var(--textColor-light);
+            padding: 2px 3px;
+            display: inline-block;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            li {
+                .item-title span {
+                    position: relative;
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        display: block;
+                        width: 3px;
+                        height: 100%;
+                        background: var(--accent);
+                        left: -3px;
+                        top: 0;
+                    }
+                }
+                &.active {
+                    .item-title span {
+                        
+                        background: var(--textBG-light);
+                        color: var(--textColor-dark);
+                        font-weight: 500;
+                    }
+                    .item-body {opacity: 1;}
+                }
+                margin-bottom: 2px;
+                >div {
+                    opacity:0;
+                    transition: all .5s ease;
+                    span {
+                        padding: 2px 3px;
+                        display: inline-block;
+                        background: var(--textBG-dark);
+                        color: var(--textColor-light);
+                    }
+                }
+                .item-body {
+                    transform-origin: top center;
+                    max-height: 0;
+                    overflow: hidden;
+                    span {
+                        background: var(--textBG-light);
+                        color: var(--textColor-dark);
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@keyframes present {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@for $i from 1 through 3 {
+    .item-title-#{$i} {
+        animation: present 0.4s linear forwards; 
+        animation-delay: $i * (1s / 4);
+    }
+}

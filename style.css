@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --accent: #FF7F01;
+  --textColor-light: #fff;
+  --textColor-dark: #202020;
+  --textBG-light: #f1f1f1;
+  --textBG-dark: #202020;
+  --padding: 16px;
+}
+
+body {
+  padding: 4rem 2rem;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.player {
+  width: 288px;
+  height: 162px;
+  background: url("assets/bg.png");
+}
+
+.fixed {
+  width: 288px;
+  height: 72px;
+  background: white;
+  border-bottom: 1px solid #C1C1C1;
+  position: relative;
+  font-size: 13px;
+}
+.fixed .text {
+  position: absolute;
+  bottom: var(--padding);
+  left: var(--padding);
+}
+.fixed .text .title {
+  margin-bottom: 4px;
+  background: var(--accent);
+  color: var(--textColor-light);
+  padding: 2px 3px;
+  display: inline-block;
+}
+.fixed .text ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.fixed .text ul li {
+  margin-bottom: 2px;
+}
+.fixed .text ul li .item-title span {
+  position: relative;
+}
+.fixed .text ul li .item-title span:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 3px;
+  height: 100%;
+  background: var(--accent);
+  left: -3px;
+  top: 0;
+}
+.fixed .text ul li.active .item-title span {
+  background: var(--textBG-light);
+  color: var(--textColor-dark);
+  font-weight: 500;
+}
+.fixed .text ul li.active .item-body {
+  opacity: 1;
+}
+.fixed .text ul li > div {
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.fixed .text ul li > div span {
+  padding: 2px 3px;
+  display: inline-block;
+  background: var(--textBG-dark);
+  color: var(--textColor-light);
+}
+.fixed .text ul li .item-body {
+  transform-origin: top center;
+  max-height: 0;
+  overflow: hidden;
+}
+.fixed .text ul li .item-body span {
+  background: var(--textBG-light);
+  color: var(--textColor-dark);
+  font-size: 12px;
+}
+
+@keyframes present {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.item-title-1 {
+  animation: present 0.4s linear forwards;
+  animation-delay: 0.25s;
+}
+
+.item-title-2 {
+  animation: present 0.4s linear forwards;
+  animation-delay: 0.5s;
+}
+
+.item-title-3 {
+  animation: present 0.4s linear forwards;
+  animation-delay: 0.75s;
+}
+
+/*# sourceMappingURL=style.css.map */
